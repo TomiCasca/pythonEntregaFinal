@@ -4,9 +4,17 @@
 
 {% block  content %}
     <h2>Listado de posts</h2>
+
+    <p>
+        <a href="{% url 'crear_post' %}">Crear nuevo post</a>
+    </p>
+
     <ul>
         {% for post in posts %}
-            <li><a href="{% url 'detalle_post' post.id %}">{{ post.titulo }}</a> - {{ post.autor }}</li>
+            <li>
+                <a href="{% url 'detalle_post' post.id %}">{{ post.titulo }}</a> - {{ post.autor }} 
+                | <a href="{% url 'editar_post' post.id %}">Editar</a>
+            </li>
         {% endfor %}
     </ul>
 {% endblock %}

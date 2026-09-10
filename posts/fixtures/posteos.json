@@ -1,0 +1,32 @@
+[
+{
+    "model": "posts.posteo",
+    "pk": 1,
+    "fields": {
+        "titulo": "Mi primer post",
+        "autor": "Micaela",
+        "contenido": "Estoy escribiendo mucho",
+        "fecha_publicacion": "2026-09-01"
+    }
+},
+{
+    "model": "posts.posteo",
+    "pk": 2,
+    "fields": {
+        "titulo": "Estoy aprendiendo Django",
+        "autor": "Alan",
+        "contenido": "Estoy escribiendo poco",
+        "fecha_publicacion": "2026-09-01"
+    }
+},
+{
+    "model": "posts.posteo",
+    "pk": 3,
+    "fields": {
+        "titulo": "Ya somos cracks en esto de programar",
+        "autor": "Todo el curso",
+        "contenido": "Estamos todos de paro",
+        "fecha_publicacion": "2026-09-01"
+    }
+}
+]

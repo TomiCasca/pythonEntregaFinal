@@ -1,8 +1,6 @@
-from typing import Iterable
-
 from django.db import models
 
-class Post(models.Model):
+class Posteo(models.Model):
     titulo = models.CharField(max_length=200)
     autor = models.CharField(max_length=50)
     contenido = models.TextField()
