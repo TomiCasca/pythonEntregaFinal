@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %} Crear Post | Mi Blog {% endblock %}
+
+{% block content %}
+    <h2>Crear un nuevo post</h2>
+    {% include "posts/CBV/formulario.html" with texto_boton="Crear Post" %}
+    {% comment %} {% include "posts/formulario.html" with texto_boton="Editar Post" titulo_form="Editar post" modo="editar" %} {% endcomment %}
+{% endblock %}

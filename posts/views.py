@@ -2,6 +2,10 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from posts.models import Posteo
 from posts.forms import FormularioCrearPosteo, FormularioEditarPosteo
+from django.views.generic.edit import UpdateView, DeleteView, CreateView
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+from django.urls import reverse_lazy
 
 def inicio(request):
     return render(request, "posts/inicio.html")
@@ -36,7 +40,9 @@ def crear_post(request):
 
     if request.method == 'POST':
         
-        formulario = FormularioCrearPosteo(request.POST)
+        formulario = FormularioCrearPosteo(request.POST, request.FILES)
+        # print(request.POST)
+        # print(request.FILES)
         if formulario.is_valid():
             # v1
             # info = formulario.cleaned_data
@@ -58,7 +64,7 @@ def editar_post(request, post_id):
     posteo = Posteo.objects.get(id=post_id)
     
     if request.method == "POST":
-        formulario = FormularioEditarPosteo(request.POST, instance=posteo)
+        formulario = FormularioEditarPosteo(request.POST, request.FILES, instance=posteo)
         if formulario.is_valid():
             formulario.save()
             return redirect('lista_posts')
@@ -66,3 +72,38 @@ def editar_post(request, post_id):
         formulario = FormularioEditarPosteo(instance=posteo)
         
     return render(request, 'posts/editar_post.html', {'formulario': formulario})
+
+def borrar_post(request, post_id):
+    
+    posteo = Posteo.objects.get(id=post_id)
+    posteo.delete()
+    
+    return redirect('lista_posts')
+
+
+class CrearPosteo(CreateView):
+    model = Posteo
+    template_name = "posts/CBV/crear_post.html"
+    success_url = reverse_lazy('lista_posts')
+    fields = "__all__"
+
+class ListaPosteos(ListView):
+    model = Posteo
+    template_name = "posts/CBV/lista_posts.html"
+    context_object_name = 'posts'
+
+class DetallePosteo(DetailView):
+    model = Posteo
+    template_name = "posts/CBV/detalle_post.html"
+
+class EditarPosteo(UpdateView):
+    model = Posteo
+    template_name = "posts/CBV/editar_post.html"
+    success_url = reverse_lazy('lista_posts')
+    # fields = "__all__"
+    form_class = FormularioEditarPosteo
+
+class BorrarPosteo(DeleteView):
+    model = Posteo
+    template_name = "posts/CBV/borrar_post.html"
+    success_url = reverse_lazy('lista_posts')

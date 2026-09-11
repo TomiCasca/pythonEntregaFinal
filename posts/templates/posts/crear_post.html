@@ -4,19 +4,6 @@
 
 {% block content %}
     <h2>Crear un nuevo post</h2>
-    <form method="post">
-        {% csrf_token %}
-
-        {% comment %} <label for="titulo">Título del post:</label>
-        <input type="text" name="titulo" id="titulo" placeholder="Título del post">
-        <label for="autor">Autor del post:</label>
-        <input type="text" name="autor" id="autor" placeholder="Autor del post">
-        <label for="contenido">Contenido del post:</label>
-        <input type="text" name="contenido" id="contenido" placeholder="Contenido del post">
-         {% endcomment %}
-         {{ formulario }}
-         
-        <input type="submit" value="Crear Post">
-        {% comment %} <button>Crear Post</button> {% endcomment %}
-    </form>
+    {% include "posts/formulario.html" with texto_boton="Crear Post" %}
+    {% comment %} {% include "posts/formulario.html" with texto_boton="Editar Post" titulo_form="Editar post" modo="editar" %} {% endcomment %}
 {% endblock %}

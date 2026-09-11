@@ -6,4 +6,7 @@
     <h2>{{ post.titulo }}</h2>
     <p><strong>Autor:</strong> {{ post.autor }}</p>
     <p>{{ post.contenido }}</p>
+    {% if post.imagen %}
+        <img src="{{ post.imagen.url }}" alt="Imagen del post" height="300">
+    {% endif %}
 {% endblock %}

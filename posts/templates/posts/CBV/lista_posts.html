@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %} Inicio | Mi Blog {% endblock %}
+
+{% block  content %}
+    <h2>Listado de posts</h2>
+
+    <p>
+        <a href="{% url 'crear_post' %}">Crear nuevo post</a>
+    </p>
+
+    <ul>
+        {% for post in posts %}
+            <li>
+                <a href="{% url 'detalle_post' post.id %}">{{ post.titulo }}</a> - {{ post.autor }} 
+                | <a href="{% url 'editar_post' post.id %}">Editar</a>
+                | <a href="{% url 'borrar_post' post.id %}">Borrar</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
