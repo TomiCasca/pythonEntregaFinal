@@ -6,6 +6,8 @@ from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 def inicio(request):
     return render(request, "posts/inicio.html")
@@ -33,6 +35,7 @@ def detalle_post(request, post_id):
     
     return render(request, 'posts/detalle_post.html', {'post': posteo})
 
+@login_required
 def crear_post(request):
 
     # print(request.GET)
@@ -96,14 +99,14 @@ class DetallePosteo(DetailView):
     model = Posteo
     template_name = "posts/CBV/detalle_post.html"
 
-class EditarPosteo(UpdateView):
+class EditarPosteo(LoginRequiredMixin, UpdateView):
     model = Posteo
     template_name = "posts/CBV/editar_post.html"
     success_url = reverse_lazy('lista_posts')
     # fields = "__all__"
     form_class = FormularioEditarPosteo
 
-class BorrarPosteo(DeleteView):
+class BorrarPosteo(LoginRequiredMixin, DeleteView):
     model = Posteo
     template_name = "posts/CBV/borrar_post.html"
     success_url = reverse_lazy('lista_posts')

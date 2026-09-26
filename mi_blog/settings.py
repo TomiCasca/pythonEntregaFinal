@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     
     # Aplicaciones propias
     'posts.apps.PostsConfig',
+    'usuarios.apps.UsuariosConfig' # 'usuarios'
 ]
 
 MIDDLEWARE = [
@@ -120,6 +121,9 @@ USE_I18N = True
 
 USE_TZ = True
 
+LOGIN_URL = 'iniciar_sesion'
+LOGIN_REDIRECT_URL = 'inicio'
+LOGOUT_REDIRECT_URL = 'inicio'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/

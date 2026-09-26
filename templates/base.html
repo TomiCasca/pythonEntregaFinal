@@ -14,7 +14,19 @@
         <nav>
             <a href="{% url 'inicio' %}">Inicio</a>
             <a href="{% url 'lista_posts' %}">Posts</a>
-            <a href="{% url 'contacto' %}"></a>
+
+            {% if user.is_authenticated %}
+            <a href="{% url "perfil" %}">{{user.get_full_name|default:user.username}}</a>
+            <form action="{% url "cerrar_sesion" %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Cerrar Sesión</button>
+            </form>
+            {% else %}
+            <a href="{% url 'iniciar_sesion' %}">Iniciar Sesión</a>
+            <a href="{% url 'registrar' %}">Registrarse</a>
+            {% endif %}
+            
+            {% comment %} <a href="{% url 'contacto' %}">Contacto</a> {% endcomment %}
         </nav>
     </header>
     <main>
