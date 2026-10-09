@@ -151,4 +151,4 @@ templates/   Plantilla base compartida
 
 ## Autor
 
-Tomás — proyecto final del curso de Desarrollo Full Stack (Coderhouse).
+Tomás Cascallares — proyecto final del curso de Desarrollo Full Stack (Coderhouse).
