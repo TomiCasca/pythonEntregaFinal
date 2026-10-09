@@ -1,21 +1,22 @@
 {% extends "base.html" %}
 
-{% block title %} Inicio | Mi Blog {% endblock %}
+{% block title %}Posts{% endblock %}
 
-{% block  content %}
-    <h2>Listado de posts</h2>
+{% block content %}
+    <div class="encabezado-seccion">
+        <h2>Todos los posts</h2>
+        {% if user.is_authenticated %}
+            <a class="boton" href="{% url 'crear_post' %}">Nuevo post</a>
+        {% endif %}
+    </div>
 
-    <p>
-        <a href="{% url 'crear_post' %}">Crear nuevo post</a>
-    </p>
-
-    <ul>
-        {% for post in posts %}
-            <li>
-                <a href="{% url 'detalle_post' post.id %}">{{ post.titulo }}</a> - {{ post.autor }} 
-                | <a href="{% url 'editar_post' post.id %}">Editar</a>
-                | <a href="{% url 'borrar_post' post.id %}">Borrar</a>
-            </li>
-        {% endfor %}
-    </ul>
+    {% if posts %}
+        <div class="tarjetas">
+            {% for post in posts %}
+                {% include "posts/tarjeta_post.html" %}
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="vacio">Todavía no hay posts publicados.</p>
+    {% endif %}
 {% endblock %}

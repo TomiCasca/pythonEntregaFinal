@@ -1,8 +1,29 @@
 {% extends "base.html" %}
 
-{% block title %} Inicio | Mi Blog {% endblock %}
+{% block title %}Inicio{% endblock %}
 
-{% block  content %}
-    <h2>Bienvenido a mi blog</h2>
-    <p>Este es el inicio del proyecto que armamos con los pibes</p>
+{% block content %}
+    <section class="portada">
+        <h1>Bitácora Dev</h1>
+        <p>Apuntes, ideas y avances de mi camino aprendiendo Python y Django.</p>
+        <p>
+            <a class="boton" href="{% url 'lista_posts' %}">Ver todos los posts</a>
+            {% if user.is_authenticated %}
+                <a class="boton boton-secundario" href="{% url 'crear_post' %}">Escribir un post</a>
+            {% else %}
+                <a class="boton boton-secundario" href="{% url 'registrar' %}">Crear una cuenta</a>
+            {% endif %}
+        </p>
+    </section>
+
+    <h2>Últimos posts</h2>
+    {% if ultimos_posts %}
+        <div class="tarjetas">
+            {% for post in ultimos_posts %}
+                {% include "posts/tarjeta_post.html" %}
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="vacio">Todavía no hay posts publicados.</p>
+    {% endif %}
 {% endblock %}

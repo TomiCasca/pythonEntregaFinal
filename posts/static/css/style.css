@@ -1,4 +1,277 @@
+:root {
+    --fondo: #f4f6fa;
+    --superficie: #ffffff;
+    --texto: #1b2a41;
+    --texto-suave: #5b6b82;
+    --primario: #1b2a41;
+    --acento: #2ec4b6;
+    --acento-oscuro: #1f9e92;
+    --peligro: #d64550;
+    --borde: #dde3ee;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #8a9597;
+    margin: 0;
+    font-family: "Segoe UI", system-ui, -apple-system, Helvetica, Arial, sans-serif;
+    background-color: var(--fondo);
+    color: var(--texto);
+    line-height: 1.6;
+}
+
+a {
+    color: var(--acento-oscuro);
+}
+
+/* Cabecera y menú */
+.cabecera {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 2rem;
+    background-color: var(--primario);
+}
+
+.marca {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.1rem;
+}
+
+.menu a {
+    color: #e6ecf5;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    color: var(--acento);
+}
+
+.form-inline {
+    display: inline;
+    margin: 0;
+}
+
+/* Contenido */
+.contenido {
+    max-width: 960px;
+    margin: 2rem auto;
+    padding: 0 1.25rem;
+    min-height: 60vh;
+}
+
+.portada {
+    padding: 2.5rem 2rem;
+    margin-bottom: 2rem;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--primario), #2b4165);
+    color: #fff;
+}
+
+.portada h1 {
+    margin-top: 0;
+}
+
+.encabezado-seccion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.vacio {
+    color: var(--texto-suave);
+}
+
+/* Tarjetas de posts */
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+}
+
+.tarjeta {
+    overflow: hidden;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    background-color: var(--superficie);
+}
+
+.tarjeta-imagen {
+    display: block;
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+}
+
+.tarjeta-cuerpo {
+    padding: 1rem 1.1rem;
+}
+
+.tarjeta-cuerpo h3 {
+    margin: 0 0 0.25rem;
+}
+
+.tarjeta-cuerpo h3 a {
+    color: var(--texto);
+    text-decoration: none;
+}
+
+.tarjeta-cuerpo h3 a:hover {
+    color: var(--acento-oscuro);
+}
+
+.meta {
+    margin: 0 0 0.5rem;
+    font-size: 0.875rem;
+    color: var(--texto-suave);
+}
+
+.acciones {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.9rem;
+}
+
+/* Detalle de un post */
+.articulo {
+    padding: 1.75rem;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    background-color: var(--superficie);
+}
+
+.articulo h2 {
+    margin-top: 0;
+}
+
+.articulo-imagen {
+    display: block;
+    max-width: 100%;
+    max-height: 420px;
+    margin: 1rem 0;
+    border-radius: 10px;
+}
+
+/* Perfil */
+.perfil {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    background-color: var(--superficie);
+}
+
+.avatar {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Formularios */
+.formulario {
+    max-width: 520px;
+    padding: 1.5rem;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    background-color: var(--superficie);
+}
+
+.formulario label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+}
+
+.formulario input[type="text"],
+.formulario input[type="email"],
+.formulario input[type="password"],
+.formulario input[type="date"],
+.formulario textarea {
+    width: 100%;
+    padding: 0.55rem 0.7rem;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    font: inherit;
+}
+
+.formulario input:focus,
+.formulario textarea:focus {
+    outline: 2px solid var(--acento);
+    border-color: var(--acento);
+}
+
+.errorlist {
+    margin: 0.25rem 0;
+    padding-left: 1.1rem;
+    color: var(--peligro);
+}
+
+/* Botones */
+.boton {
+    display: inline-block;
+    padding: 0.5rem 1.1rem;
+    border: 1px solid var(--acento);
+    border-radius: 8px;
+    background-color: var(--acento);
+    color: var(--primario);
+    font: inherit;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.boton:hover {
+    background-color: var(--acento-oscuro);
+    border-color: var(--acento-oscuro);
+    color: #fff;
+}
+
+.boton-secundario {
+    background-color: transparent;
+    color: inherit;
+    border-color: currentColor;
+}
+
+.menu .boton-secundario {
+    color: #e6ecf5;
+}
+
+.boton-peligro {
+    background-color: var(--peligro);
+    border-color: var(--peligro);
+    color: #fff;
+}
+
+.boton-peligro:hover {
+    background-color: #b8343e;
+    border-color: #b8343e;
+}
+
+/* Pie */
+.pie {
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--texto-suave);
 }

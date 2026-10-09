@@ -1,12 +1,24 @@
 {% extends "base.html" %}
 
-{% block title %} Detalle del Post | Mi Blog {% endblock %}
+{% block title %}{{ posteo.titulo }}{% endblock %}
 
 {% block content %}
-    <h2>{{ post.titulo }}</h2>
-    <p><strong>Autor:</strong> {{ post.autor }}</p>
-    <p>{{ post.contenido }}</p>
-    {% if post.imagen %}
-        <img src="{{ post.imagen.url }}" alt="Imagen del post" height="300">
-    {% endif %}
+    <article class="articulo">
+        <h2>{{ posteo.titulo }}</h2>
+        <p class="meta">Por {{ posteo.autor }} &middot; {{ posteo.fecha_publicacion|date:"d/m/Y" }}</p>
+
+        {% if posteo.imagen %}
+            <img class="articulo-imagen" src="{{ posteo.imagen.url }}" alt="Imagen de {{ posteo.titulo }}">
+        {% endif %}
+
+        <p>{{ posteo.contenido|linebreaksbr }}</p>
+
+        <p class="acciones">
+            <a href="{% url 'lista_posts' %}">&larr; Volver al listado</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'editar_post' posteo.pk %}">Editar</a>
+                <a href="{% url 'borrar_post' posteo.pk %}">Borrar</a>
+            {% endif %}
+        </p>
+    </article>
 {% endblock %}

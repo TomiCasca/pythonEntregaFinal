@@ -4,40 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Mi blog{% endblock %}</title>
+    <title>{% block title %}Inicio{% endblock %} | Bitácora Dev</title>
+    <link rel="icon" type="image/svg+xml" href="{% static 'img/logo.svg' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <header>
-        <img src="{% static 'img/logo.png' %}" alt="Logo del blog">
-        <h1>Mi Blog</h1>
-        <nav>
+    <header class="cabecera">
+        <a class="marca" href="{% url 'inicio' %}">
+            <img src="{% static 'img/logo.svg' %}" alt="Logo de Bitácora Dev" width="40" height="40">
+            <span>Bitácora Dev</span>
+        </a>
+        <nav class="menu">
             <a href="{% url 'inicio' %}">Inicio</a>
             <a href="{% url 'lista_posts' %}">Posts</a>
 
             {% if user.is_authenticated %}
-            <a href="{% url "perfil" %}">{{user.get_full_name|default:user.username}}</a>
-            <form action="{% url "cerrar_sesion" %}" method="post">
-                {% csrf_token %}
-                <button type="submit">Cerrar Sesión</button>
-            </form>
+                <a href="{% url 'crear_post' %}">Nuevo post</a>
+                <a href="{% url 'perfil' %}">{{ user.get_full_name|default:user.username }}</a>
+                <form action="{% url 'cerrar_sesion' %}" method="post" class="form-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="boton boton-secundario">Cerrar sesión</button>
+                </form>
             {% else %}
-            <a href="{% url 'iniciar_sesion' %}">Iniciar Sesión</a>
-            <a href="{% url 'registrar' %}">Registrarse</a>
+                <a href="{% url 'iniciar_sesion' %}">Iniciar sesión</a>
+                <a href="{% url 'registrar' %}">Registrarse</a>
             {% endif %}
-            
-            {% comment %} <a href="{% url 'contacto' %}">Contacto</a> {% endcomment %}
         </nav>
     </header>
-    <main>
+
+    <main class="contenido">
         {% block content %}
         {% endblock %}
     </main>
-    <footer>
-        <p>
-            Creado por Django
-        </p>
+
+    <footer class="pie">
+        <p>Bitácora Dev &middot; Hecho con Django por Tomás</p>
     </footer>
-    <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>

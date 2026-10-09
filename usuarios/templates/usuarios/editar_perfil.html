@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %} Editar Perfil | Mi Blog {% endblock %}
+{% block title %}Editar perfil{% endblock %}
 
 {% block content %}
-    <h2>Editar Perfil</h2>
-    <form method="post" enctype="multipart/form-data">
+    <h2>Editar perfil</h2>
+    <form method="post" enctype="multipart/form-data" class="formulario">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Guardar Cambios</button>
+        <button type="submit" class="boton">Guardar cambios</button>
     </form>
 {% endblock %}

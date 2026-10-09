@@ -1,0 +1,16 @@
+<article class="tarjeta">
+    {% if post.imagen %}
+        <img class="tarjeta-imagen" src="{{ post.imagen.url }}" alt="Imagen de {{ post.titulo }}">
+    {% endif %}
+    <div class="tarjeta-cuerpo">
+        <h3><a href="{% url 'detalle_post' post.pk %}">{{ post.titulo }}</a></h3>
+        <p class="meta">Por {{ post.autor }} &middot; {{ post.fecha_publicacion|date:"d/m/Y" }}</p>
+        <p>{{ post.contenido|truncatewords:25 }}</p>
+        {% if user.is_authenticated %}
+            <p class="acciones">
+                <a href="{% url 'editar_post' post.pk %}">Editar</a>
+                <a href="{% url 'borrar_post' post.pk %}">Borrar</a>
+            </p>
+        {% endif %}
+    </div>
+</article>

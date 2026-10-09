@@ -3,9 +3,9 @@
     "model": "posts.posteo",
     "pk": 1,
     "fields": {
-        "titulo": "Mi primer post",
-        "autor": "Micaela",
-        "contenido": "Estoy escribiendo mucho",
+        "titulo": "Primeros pasos con Django",
+        "autor": "Tomás",
+        "contenido": "Arranqué el proyecto con startproject y startapp. Lo más útil fue entender cómo se conectan las URLs, las vistas y los templates.",
         "fecha_publicacion": "2026-09-01"
     }
 },
@@ -13,20 +13,20 @@
     "model": "posts.posteo",
     "pk": 2,
     "fields": {
-        "titulo": "Estoy aprendiendo Django",
-        "autor": "Alan",
-        "contenido": "Estoy escribiendo poco",
-        "fecha_publicacion": "2026-09-01"
+        "titulo": "Modelos, migraciones y el ORM",
+        "autor": "Tomás",
+        "contenido": "Definir un modelo y crear su tabla con makemigrations y migrate me ahorró un montón de SQL a mano. Guardar y consultar datos desde Python es muy cómodo.",
+        "fecha_publicacion": "2026-09-15"
     }
 },
 {
     "model": "posts.posteo",
     "pk": 3,
     "fields": {
-        "titulo": "Ya somos cracks en esto de programar",
-        "autor": "Todo el curso",
-        "contenido": "Estamos todos de paro",
-        "fecha_publicacion": "2026-09-01"
+        "titulo": "Usuarios, login y rutas protegidas",
+        "autor": "Tomás",
+        "contenido": "Con LoginRequiredMixin y las vistas de autenticación de Django, solo los usuarios registrados pueden crear, editar o borrar posts.",
+        "fecha_publicacion": "2026-10-01"
     }
 }
 ]
